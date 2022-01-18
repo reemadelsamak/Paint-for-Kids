@@ -26,21 +26,21 @@ private:
 
 	//Pointers to Input and Output classes
 	GUI* pGUI;
+	
 
-
-public:
-	ApplicationManager();
+public:	
+	ApplicationManager(); 
 	~ApplicationManager();
 
 	void Run();		//to run the application
-
+	
 	// -- Action-Related Functions
 	Action* CreateAction(ActionType);
-	void ExecuteAction(Action*&); //Execute an action
-
+	void ExecuteAction(Action*&) ; //Execute an action
+	
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig); //Adds a new figure to the FigList
-	CFigure* GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
+	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
 	int getFigCount() const;				//Returns number of figures
 
 
@@ -52,7 +52,7 @@ public:
 	void ClearSelectedFigs();                       //Cleares the SelectedFig array
 
 	// -- Interface Management Functions	
-	GUI* GetGUI() const; //Return pointer to the interface
+	GUI *GetGUI() const; //Return pointer to the interface
 	void UpdateInterface() const;	//Redraws all the drawing window	
 };
 

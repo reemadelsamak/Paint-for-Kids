@@ -14,4 +14,17 @@ public:
 	
 };
 
+
+//Draw Color Action class
+class ActionChangeDrawColor : public Action
+{
+public:
+	ActionChangeDrawColor(ApplicationManager* pApp);
+
+	//Add Square to the ApplicationManager
+	virtual void Execute();
+
+};
+
+
 #endif

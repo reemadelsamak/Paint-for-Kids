@@ -2,7 +2,6 @@
 #define ACTION_DRAW_COLOR_H
 
 #include "Action.h"
-#include "..\Figures\CFigure.h"
 
 //Add Square Action class
 class ActionDrawColor : public Action

@@ -1,5 +1,4 @@
 #include "ActionSelectFigure.h"
-#include "..\ApplicationManager.h"
 #include "..\GUI\GUI.h"
 
 ActionSelectFigure::ActionSelectFigure(ApplicationManager* pApp) :Action(pApp)
@@ -33,7 +32,7 @@ void ActionSelectFigure::Select() {
 	GUI* pGUI = pManager->GetGUI();
 
 	pGUI->ClearStatusBar();
-	SelectedFig->SetSelected(true);
+	SelectedFig->SetSelected(true); 
 	pManager->AddSelectedFigure(SelectedFig); //Add to SelectedFigs array
 	SelectedFig->PrintInfo(pGUI); //Print Selected Figure Info
 }
