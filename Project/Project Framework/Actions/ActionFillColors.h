@@ -2,6 +2,7 @@
 #define ACTION_FILL_COLOR_H
 
 #include "Action.h"
+#include "..\Figures\CFigure.h"
 
 class ActionFillColors :public Action
 {

@@ -1,4 +1,5 @@
 #include "ActionSelectFigure.h"
+#include "..\ApplicationManager.h"
 #include "..\GUI\GUI.h"
 
 ActionSelectFigure::ActionSelectFigure(ApplicationManager* pApp) :Action(pApp)
