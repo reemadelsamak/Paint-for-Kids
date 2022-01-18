@@ -3,6 +3,7 @@
 
 #include "..\defs.h"
 #include "..\GUI\GUI.h"
+#include <fstream>
 
 //Base class for all figures
 class CFigure
@@ -11,16 +12,16 @@ protected:
 	int ID;		//Each figure has an ID
 	bool Selected;	//true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info
-	
+
 	/// Add more parameters if needed.
 
 public:
 	CFigure(GfxInfo FigureGfxInfo);
-	void SetSelected(bool );	//select/unselect the figure
+	void SetSelected(bool);	//select/unselect the figure
 	bool IsSelected() const;	//check whether fig is selected
 
-	virtual void DrawMe(GUI*) const  = 0 ;		//Draw the figure
-	
+	virtual void DrawMe(GUI*) const = 0;		//Draw the figure
+
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 
@@ -28,6 +29,10 @@ public:
 	///It should be overridden by each inherited figure
 
 	///Decide the parameters that you should pass to each function	
+	virtual bool PointOnFig(int, int) const = 0;  //Checks if a given point is on the figure
+
+	void SetID(int id);				//Sets ID to figure's index in FigList.
+	int GetID() const;				//Gets the ID of the figure
 
 
 	//virtual void Rotate() = 0;	//Rotate the figure
@@ -37,7 +42,7 @@ public:
 	//virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file
 	//virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
 
-	//virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
+	virtual void PrintInfo(GUI* pOut) const = 0;	//print all figure info on the status bar
 };
 
 #endif

@@ -6,11 +6,13 @@
 class CSquare : public CFigure
 {
 private:
-	Point TopLeftCorner;	
+	Point TopLeftCorner;
 	int length;
 public:
-	CSquare(Point , int, GfxInfo FigureGfxInfo );
+	CSquare(Point, int, GfxInfo FigureGfxInfo);
 	virtual void DrawMe(GUI* pOut) const;
+	virtual bool PointOnFig(int, int) const;
+	virtual void PrintInfo(GUI* pOut) const;
 };
 
 #endif
