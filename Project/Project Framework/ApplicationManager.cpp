@@ -4,6 +4,8 @@
 #include "Actions\ActionFillColors.h"
 #include "Actions\ActionBGColor.h"
 #include "Actions\ActionSelectFigure.h"
+#include "Actions\ActionPlayMode.h"
+#include "Actions\ActionDrawMode.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -79,6 +81,12 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case CHNG_BK_CLR:
 			pGUI->CreateColorToolBar();
 			newAct = new ActionBGColor(this);
+			break;
+		case TO_PLAY:
+			newAct = new ActionPlayMode(this);
+			break;
+		case TO_DRAW:
+			newAct = new ActionDrawMode(this);
 			break;
 
 		case SELECT_FIGURE:

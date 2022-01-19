@@ -23,6 +23,7 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	DRAW_CLR,
 	FILL_CLR,
 	BKGRND_CLR,
+	ITM_TOPLAY,
 	//ITM_SELECT,
 
 	ITM_EXIT,		//Exit item
@@ -45,7 +46,19 @@ enum PlayMenuItem //The items of the Play menu (you should add more items)
 {
 	//Note: Items are ordered here as they appear in menu
 	//If you want to change the menu items order, change the order here
+	play0,		//Square item in menu
+	play1,
+	//TODO: Add more items names here
+	play2,
+	play3,
+	play4,
+	ITM_TODRAW,
+
 	
+	//ITM_SELECT,
+
+	ITM_EXIT1,		//Exit item
+
 	//TODO: Add more items names here
 
 	PLAY_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum

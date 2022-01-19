@@ -89,6 +89,7 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_ELPS: return DRAW_ELPS;
 			case DRAW_CLR: return CHNG_DRAW_CLR;
 			case FILL_CLR: return CHNG_FILL_CLR;
+			case ITM_TOPLAY: return TO_PLAY;
 			case BKGRND_CLR: return CHNG_BK_CLR;
 			//case ITM_SELECT: return SELECT_FIGURE;
 
@@ -99,6 +100,8 @@ ActionType GUI::MapInputToActionType() const
 			}
 		}
 
+		
+		
 		//[2] User clicks on the drawing area
 		if ( y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
 		{
@@ -110,15 +113,48 @@ ActionType GUI::MapInputToActionType() const
 		//[3] User clicks on the status bar
 		return STATUS;
 	}
-	else	//GUI is in PLAY mode
+	else if (UI.InterfaceMode == MODE_PLAY)	//GUI in the DRAW mode
 	{
-		///TODO:
-		//perform checks similar to Draw mode checks above
-		//and return the correspoding action
-		return TO_PLAY;	//just for now. This should be updated
-	}	
+		//[1] If user clicks on the Toolbar
+		if (y >= 0 && y < UI.ToolBarHeight)
+		{
+			//Check whick Menu item was clicked
+			//==> This assumes that menu items are lined up horizontally <==
+			int ClickedItemOrder = (x / UI.MenuItemWidth);
+			//Divide x coord of the point clicked by the menu item width (int division)
+			//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
 
+			switch (ClickedItemOrder)
+			{
+			case play0: return DRAW_SQUARE;
+			case play1: return DRAW_ELPS;
+			case play2: return CHNG_DRAW_CLR;
+			case play3: return CHNG_BK_CLR;
+			case play4: return CHNG_BK_CLR;
+			case ITM_TODRAW: return TO_DRAW;
+
+				//case ITM_SELECT: return SELECT_FIGURE;
+
+
+			case ITM_EXIT1: return EXIT;
+
+			default: return EMPTY;	//A click on empty place in desgin toolbar
+			}
+		}
+		//[2] User clicks on the drawing area
+		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
+		{
+			return DRAWING_AREA;
+		}
+
+		//[3] User clicks on the status bar
+		return STATUS;
+		//return TO_PLAY;	//just for now. This should be updated
+	}
 }
+		
+
+
 //======================================================================================//
 //								Output Functions										//
 //======================================================================================//
@@ -178,6 +214,7 @@ void GUI::CreateDrawToolBar() const
 	MenuItemImages[DRAW_CLR] = "images\\MenuItems\\draw.jpg";
 	MenuItemImages[FILL_CLR] = "images\\MenuItems\\fill.jpg";
 	MenuItemImages[BKGRND_CLR] = "images\\MenuItems\\bkgrnd.jpg";
+	MenuItemImages[ITM_TOPLAY] = "images\\MenuItems\\playmode.jpeg";
 	//MenuItemImages[ITM_SELECT] = "images\\MenuItems\\select.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
@@ -244,6 +281,37 @@ void GUI::CreatePlayToolBar() const
 {
 	UI.InterfaceMode = MODE_PLAY;
 	///TODO: write code to create Play mode menu
+	//ClearToolBar();
+
+	//You can draw the tool bar icons in any way you want.
+	//Below is one possible way
+
+	//First prepare List of images for each menu item
+	//To control the order of these images in the menu, 
+	//reoder them in UI_Info.h ==> enum DrawMenuItem
+	string MenuItemImages[PLAY_ITM_COUNT];
+	MenuItemImages[play0] = "images\\MenuItems\\red.jpeg";
+	MenuItemImages[play1] = "images\\MenuItems\\yellow.jpeg";
+	MenuItemImages[play2] = "images\\MenuItems\\draw.jpg";
+	MenuItemImages[play3] = "images\\MenuItems\\fill.jpg";
+	MenuItemImages[play4] = "images\\MenuItems\\fill.jpg";
+
+	MenuItemImages[ITM_TODRAW] = "images\\MenuItems\\drawmode.jpeg";
+	//MenuItemImages[ITM_SELECT] = "images\\MenuItems\\select.jpg";
+	MenuItemImages[ITM_EXIT1] = "images\\MenuItems\\Menu_Exit.jpg";
+
+	//TODO: Prepare images for each menu item and add it to the list
+
+	//Draw menu item one image at a time
+	for (int i = 0; i < PLAY_ITM_COUNT; i++)
+		pWind->DrawImage(MenuItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+
+
+
+	//Draw a line under the toolbar
+	pWind->SetPen(RED, 3);
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
