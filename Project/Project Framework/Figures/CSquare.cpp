@@ -1,5 +1,10 @@
 #include "CSquare.h"
 
+#include <iostream>
+#include <fstream>
+
+
+CSquare::CSquare() {}
 CSquare::CSquare(Point P1, int len, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	TopLeftCorner = P1;
@@ -23,11 +28,45 @@ bool CSquare::PointOnFig(int x, int y) const {
 }
 
 
-void CSquare::PrintInfo(GUI* pOut) const{
-	//Print Selected Square Info
-	string message = "ID: " + to_string(GetID()) +
-		", Top-Left: " + to_string(TopLeftCorner.x) + "," + to_string(TopLeftCorner.y) +
-		", Length: " + to_string(length) +
-		", Area: " + to_string(length * length);
-	pOut->PrintMessage(message);
+void CSquare::PrintInfo(GUI* pOut) const {
+	string x1 = to_string(TopLeftCorner.x);
+	string y1 = to_string(TopLeftCorner.y);
+	string x2 = to_string(length);
+	string c1 = this->getcolor(this->FigGfxInfo.DrawClr);
+	string c2 = this->getcolor(this->FigGfxInfo.FillClr);
+	string allInfo = (" TopLeftCorner: (" + x1 + ", " + y1 + ")" + " length: (" + x2 + ")" + " drawcolor:(" + c1 + ")" + " fillcolor:(" + c2 + ")");
+
+	pOut->PrintMessage(allInfo);
+
+}
+
+void CSquare::Save(ofstream& OutFile) {
+
+	OutFile << "CSquare\t" << this->ID << "\t" << this->TopLeftCorner.x << "\t" << this->TopLeftCorner.y << "\t" << this->length << "\t"
+		<< this->getcolor(this->FigGfxInfo.DrawClr) << "\t";
+	if (this->FigGfxInfo.isFilled)
+		OutFile << this->getcolor(this->FigGfxInfo.FillClr) << "\n";
+	else
+		OutFile << "NON-FILLED\n";
+}
+
+void CSquare::Load(ifstream& Infile) {
+
+	string s;
+	Infile >> ID >> TopLeftCorner.x >> TopLeftCorner.y >> length;
+
+	Infile >> s;
+	FigGfxInfo.DrawClr = this->getcolor(s);
+
+	Infile >> s;
+	if (s == "NON-FILLED")
+		FigGfxInfo.isFilled = false;
+	else
+	{
+		FigGfxInfo.FillClr = this->getcolor(s);
+		FigGfxInfo.isFilled = true;
+	}
+	this->FigGfxInfo.BorderWdth = 3;
+	this->SetSelected(false);
+
 }
