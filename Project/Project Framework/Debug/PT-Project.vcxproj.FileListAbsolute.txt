@@ -4,4 +4,8 @@ C:\Users\Roo\Desktop\DS Project\Project\Project Framework\Debug\PT Project.exe
 C:\Users\Roo\Desktop\Final Reem\Project\Project Framework\Debug\PT Project.exe
 C:\Users\Roo\Desktop\PaintForKids\Project\Project Framework\Debug\PT Project.exe
 D:\OS\gitPaint\Paint-for-Kids\Project\Project Framework\Debug\PT Project.exe
+<<<<<<< HEAD
 E:\PaintForKids\Project\Project Framework\Debug\PT Project.exe
+=======
+E:\iti\Data Structure\final project\Paint-for-Kids\Project\Project Framework\Debug\PT Project.exe
+>>>>>>> d93c96fb0b6842523b4beaaa2295451f06d4203c

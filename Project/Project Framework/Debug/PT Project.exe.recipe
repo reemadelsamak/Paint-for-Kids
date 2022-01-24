@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< HEAD
       <FullPath>E:\PaintForKids\Project\Project Framework\Debug\PT Project.exe</FullPath>
+=======
+      <FullPath>E:\iti\Data Structure\final project\Paint-for-Kids\Project\Project Framework\Debug\PT Project.exe</FullPath>
+>>>>>>> d93c96fb0b6842523b4beaaa2295451f06d4203c
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
