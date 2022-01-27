@@ -17,6 +17,7 @@ protected:
 
 public:
 	CFigure(GfxInfo FigureGfxInfo);
+	CFigure();
 	void SetSelected(bool );	//select/unselect the figure
 	bool IsSelected() const;	//check whether fig is selected
 	int SetSize() const;
@@ -43,9 +44,10 @@ public:
 
 	void setSize(float size);
 
-	//virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file
-	//virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
-
+	virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file
+	virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
+	string getcolor(color c) const;
+	color getcolor(string s) const;
 	virtual void PrintInfo(GUI* pOut) const = 0;	//print all figure info on the status bar
 	virtual int getInfo() const = 0;
 

@@ -1,4 +1,24 @@
 ﻿cl : command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+<<<<<<< HEAD
   GUI.cpp
 D:\OS\gitPaint\Paint-for-Kids\Project\Project Framework\GUI\GUI.cpp(158): warning C4715: 'GUI::MapInputToActionType': not all control paths return a value
   PT-Project.vcxproj -> D:\OS\gitPaint\Paint-for-Kids\Project\Project Framework\Debug\PT Project.exe
+=======
+  CHexagon.cpp
+C:\Users\Roo\Desktop\PaintForKids\Project\Project Framework\Figures\CHexagon.cpp(19,8): error C2039: 'DrawHexagon': is not a member of 'GUI'
+C:\Users\Roo\Desktop\PaintForKids\Project\Project Framework\GUI\GUI.h(12): message : see declaration of 'GUI'
+C:\Users\Roo\Desktop\PaintForKids\Project\Project Framework\Figures\CHexagon.cpp(24,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Roo\Desktop\PaintForKids\Project\Project Framework\Figures\CHexagon.cpp(25,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  CElipse.cpp
+C:\Users\Roo\Desktop\PaintForKids\Project\Project Framework\Figures\CElipse.cpp(21,8): error C2039: 'DrawElipse': is not a member of 'GUI'
+C:\Users\Roo\Desktop\PaintForKids\Project\Project Framework\GUI\GUI.h(12): message : see declaration of 'GUI'
+  ApplicationManager.cpp
+  ActionSave.cpp
+C:\Users\Roo\Desktop\PaintForKids\Project\Project Framework\Actions\ActionSave.cpp(46,12): error C2039: 'Saveall': is not a member of 'ApplicationManager'
+C:\Users\Roo\Desktop\PaintForKids\Project\Project Framework\Actions\Action.h(7): message : see declaration of 'ApplicationManager'
+  ActionLoad.cpp
+C:\Users\Roo\Desktop\PaintForKids\Project\Project Framework\Actions\ActionLoad.cpp(61,13): error C2039: 'ClearFigList': is not a member of 'ApplicationManager'
+C:\Users\Roo\Desktop\PaintForKids\Project\Project Framework\Actions\Action.h(7): message : see declaration of 'ApplicationManager'
+  ActionDrawColor.cpp
+  Generating Code...
+>>>>>>> 94a402085a606c7da51d6c5b7dfe0e32ec55dbee
