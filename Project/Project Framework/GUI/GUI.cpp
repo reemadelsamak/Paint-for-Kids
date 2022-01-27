@@ -6,15 +6,15 @@ GUI::GUI()
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
 	
-	UI.width = 1300;
-	UI.height = 700;
+	UI.width = 600;
+	UI.height = 500;
 	UI.wx = 5;
 	UI.wy =5;
 
 	
 	UI.StatusBarHeight = 50;
 	UI.ToolBarHeight = 50;
-	UI.MenuItemWidth = 80;
+	UI.MenuItemWidth = 60;
 	
 	UI.DrawColor = BLACK;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
@@ -90,6 +90,10 @@ ActionType GUI::MapInputToActionType() const
 			case DRAW_CLR: return CHNG_DRAW_CLR;
 			case FILL_CLR: return CHNG_FILL_CLR;
 			case ITM_TOPLAY: return TO_PLAY;
+			case ITM_DELETE: return DEL;
+			case ITM_RESIZE: return RESIZE;
+
+
 			case BKGRND_CLR: return CHNG_BK_CLR;
 			//case ITM_SELECT: return SELECT_FIGURE;
 
@@ -215,6 +219,11 @@ void GUI::CreateDrawToolBar() const
 	MenuItemImages[FILL_CLR] = "images\\MenuItems\\fill.jpg";
 	MenuItemImages[BKGRND_CLR] = "images\\MenuItems\\bkgrnd.jpg";
 	MenuItemImages[ITM_TOPLAY] = "images\\MenuItems\\playmode.jpeg";
+	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\RED.jpeg";
+	MenuItemImages[ITM_RESIZE] = "images\\MenuItems\\blue.jpeg";
+
+
+
 	//MenuItemImages[ITM_SELECT] = "images\\MenuItems\\select.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
@@ -227,7 +236,7 @@ void GUI::CreateDrawToolBar() const
 
 
 	//Draw a line under the toolbar
-	pWind->SetPen(RED, 3);
+	pWind->SetPen(MAGENTA, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
 
 }
@@ -246,10 +255,39 @@ void GUI::CreateColorToolBar() const
 
 	//Add Colors to the toolbar
 	for (int i = 0; i < COLOR_ITM_COUNT; i++)
+		pWind->DrawImage(MenuItemImages[i], i * UI.MenuItemWidth/2, UI.ToolBarHeight, UI.MenuItemWidth/2, UI.ToolBarHeight/2);
+	//Draw a line under the toolbar
+	pWind->SetPen(MAGENTA, 2);
+	pWind->DrawLine(0, UI.ToolBarHeight + UI.ToolBarHeight/2, UI.width, UI.ToolBarHeight + UI.ToolBarHeight/2);
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+
+void GUI::CreateResizeToolBar() const
+{
+	string MenuItemImages[RESIZE_ITM_COUNT];
+
+	MenuItemImages[ITM_GREEN1] = "images\\MenuItems\\green.jpeg";
+	MenuItemImages[ITM_BLUE1] = "images\\MenuItems\\blue.jpeg";
+	MenuItemImages[ITM_RED1] = "images\\MenuItems\\red.jpeg";
+	MenuItemImages[ITM_YELLOW1] = "images\\MenuItems\\yellow.jpeg";
+	
+
+
+	//Add Colors to the toolbar
+	for (int i = 0; i < RESIZE_ITM_COUNT; i++)
 		pWind->DrawImage(MenuItemImages[i], i * UI.MenuItemWidth, UI.ToolBarHeight, UI.MenuItemWidth, UI.ToolBarHeight);
 	//Draw a line under the toolbar
 	pWind->SetPen(RED, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight + UI.ToolBarHeight, UI.width, UI.ToolBarHeight + UI.ToolBarHeight);
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+void GUI::ClearResizeToolBar() const
+{
+	pWind->SetPen(UI.BkGrndColor, 1);
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->DrawRectangle(0, UI.ToolBarHeight, UI.width, UI.height - UI.StatusBarHeight);
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 

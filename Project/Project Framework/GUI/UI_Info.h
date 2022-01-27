@@ -24,6 +24,8 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	FILL_CLR,
 	BKGRND_CLR,
 	ITM_TOPLAY,
+	ITM_DELETE,
+	ITM_RESIZE,
 	//ITM_SELECT,
 
 	ITM_EXIT,		//Exit item
@@ -40,6 +42,14 @@ enum colors {
 	ITM_BLUE,
 	ITM_NOFILL,
 	COLOR_ITM_COUNT
+};
+enum Resize {
+	ITM_GREEN1,
+	ITM_YELLOW1,
+	ITM_RED1,
+	ITM_BLUE1,
+
+	RESIZE_ITM_COUNT
 };
 
 enum PlayMenuItem //The items of the Play menu (you should add more items)

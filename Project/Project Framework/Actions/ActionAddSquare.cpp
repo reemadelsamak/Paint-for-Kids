@@ -1,5 +1,6 @@
 #include "ActionAddSquare.h"
 #include "..\Figures\CSquare.h"
+#include "..\Figures/CFigure.h"
 
 #include "..\ApplicationManager.h"
 

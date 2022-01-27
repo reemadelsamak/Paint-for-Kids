@@ -50,6 +50,7 @@ public:
 	void RemoveSelectedFigure(CFigure*);			//Removes a figure from the SelectedFigs array
 	CFigure* const* GetSelectedFigures() const;		//Returns a pointer to the SelectedFigs array
 	void ClearSelectedFigs();                       //Cleares the SelectedFig array
+	void RemoveFig(int ID);
 
 	// -- Interface Management Functions	
 	GUI *GetGUI() const; //Return pointer to the interface

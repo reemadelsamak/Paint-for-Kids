@@ -1,11 +1,17 @@
 #include "CSquare.h"
 
+int CSquare::RectCnt = 0;
 CSquare::CSquare(Point P1, int len, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	TopLeftCorner = P1;
 	length = len;
+	//Corner1 = P1;
+	RectCnt++;
+	FigGfxInfo.Resize_Factor = 1;
 }
-	
+
+
+
 
 void CSquare::DrawMe(GUI* pGUI) const
 {
@@ -13,6 +19,8 @@ void CSquare::DrawMe(GUI* pGUI) const
 	pGUI->DrawSquare(TopLeftCorner, length, FigGfxInfo, Selected);
 	
 }
+
+
 
 //If x,y Point on the Square
 bool CSquare::PointOnFig(int x, int y) const {
@@ -31,3 +39,26 @@ void CSquare::PrintInfo(GUI* pOut) const{
 		", Area: " + to_string(length * length);
 	pOut->PrintMessage(message);
 }
+
+int CSquare::getInfo() const {
+	//Print Selected Square Info
+	
+	return TopLeftCorner.x ;
+		
+}
+
+void CSquare::Resize(float aa)
+{
+	
+	length *= aa;
+
+	
+}
+float CSquare::getsize()
+{
+
+return	length;
+
+
+}
+

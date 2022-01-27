@@ -29,3 +29,11 @@ void CFigure::SetID(int id)
 int CFigure::GetID() const
 {return ID;}
 
+//void CFigure::SetSize(int id)
+//{
+//	ID = id;
+//}
+int CFigure::SetSize() const
+{
+	return ID;
+}

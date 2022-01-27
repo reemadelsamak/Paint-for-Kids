@@ -6,6 +6,10 @@
 #include "Actions\ActionSelectFigure.h"
 #include "Actions\ActionPlayMode.h"
 #include "Actions\ActionDrawMode.h"
+#include "Actions\ActionDelete.h"
+#include "Actions\AtionResize.h"
+
+
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -81,6 +85,12 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case CHNG_BK_CLR:
 			pGUI->CreateColorToolBar();
 			newAct = new ActionBGColor(this);
+			break;
+		case DEL:
+			newAct = new ActionDelete(this);
+			break;
+		case RESIZE:
+			newAct = new AtionResize(this);
 			break;
 		case TO_PLAY:
 			newAct = new ActionPlayMode(this);
@@ -192,6 +202,16 @@ void ApplicationManager::ClearSelectedFigs() {
 		SelectedFigs[i] = NULL;
 	}
 	selectedCount = 0;
+}
+void ApplicationManager::RemoveFig(int ID) {
+	//Loops on all figures ,starting at the index of the deleted one, shifting them back 1 element and setting their ID
+	for (int i = ID; i < FigCount - 1; i++) {
+		FigList[i] = FigList[i + 1];
+		FigList[i]->SetID(i);
+	}
+	//Reduce FigCount by 1 and nullify the extra pointer (used to point at the deleted figure)
+	FigCount--;
+	FigList[FigCount] = NULL;
 }
 
 //==================================================================================//
